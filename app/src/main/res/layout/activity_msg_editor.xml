@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MsgEditor">
+
+
+
+    <!-- TODO: Schimbare de interfata -->
+
+
+
+    <include layout="@layout/toolbar_layout" />
+
+        <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="50dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                    <TextView
+                        android:id="@+id/toTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="@string/to"
+                        android:textColor="@color/blackText"/>
+                    <EditText
+                        android:imeOptions="actionNext"
+                        android:importantForAutofill="no"
+                        android:id="@+id/phoneField"
+                        android:inputType="phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/emptyPhoneField"
+                        android:textSize="20sp"
+                        android:ems="10" />
+
+                <!-- TODO: Add a button to add from contacts here -->
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/timeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/time"
+                    android:textColor="@color/blackText"/>
+                <EditText
+                    android:importantForAutofill="no"
+                    android:id="@+id/timeField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/emptyTimeField"
+                    android:textSize="20sp"
+                    android:ems="10"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="5dp">
+
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="@string/date"
+                    android:textColor="@color/blackText"/>
+                <EditText
+                    android:importantForAutofill="no"
+                    android:id="@+id/dateField"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/emptyDateField"
+                    android:textSize="20sp"
+                    android:ems="10"
+                    tools:ignore="TextFields" />
+            </LinearLayout>
+
+
+            <EditText
+                android:imeOptions="actionNext"
+                android:importantForAutofill="no"
+                android:layout_margin="5dp"
+                android:id="@+id/textField"
+                android:textSize="20sp"
+                android:hint="@string/emptyTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"/>
+
+            <Button
+                android:id="@+id/createButton"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/blackText"
+                android:text="@string/createMsg"/>
+
+        </LinearLayout>
+
+
+</LinearLayout>

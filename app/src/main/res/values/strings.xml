@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="button1">Press or hold</string>
+    <string name="addButton">New message</string>
+    <string name="settings">Settings</string>
+    <string name="emptyPhoneField">(Enter phone number)</string>
+    <string name="emptyDateField">(Enter date)</string>
+    <string name="emptyTimeField">(Enter time)</string>
+    <string name="appTitle">Tazoo</string>
+    <string name="EditTb">Edit</string>
+    <string name="DeleteTb">Delete</string>
+    <string name="emptyTextField">Enter your message...</string>
+    <string name="backButtonTb">Back</string>
+    <string name="hour">Hour:</string>
+    <string name="when">When:</string>
+    <string name="to">To:</string>
+    <string name="time">Time:</string>
+    <string name="date">Date:</string>
+    <string name="createMsg">Create</string>
+</resources>
