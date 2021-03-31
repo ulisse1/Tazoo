@@ -9,7 +9,7 @@
     <string name="appTitle">Tazoo</string>
     <string name="EditTb">Edit</string>
     <string name="DeleteTb">Delete</string>
-    <string name="emptyTextField">Enter your message...</string>
+    <string name="emptyTextField">Enter your message…</string>
     <string name="backButtonTb">Back</string>
     <string name="hour">Hour:</string>
     <string name="when">When:</string>
@@ -17,4 +17,7 @@
     <string name="time">Time:</string>
     <string name="date">Date:</string>
     <string name="createMsg">Create</string>
+    <string name="add_number">Add Number</string>
+    <string name="add_time">Add Time</string>
+    <string name="add_date">Add Date</string>
 </resources>

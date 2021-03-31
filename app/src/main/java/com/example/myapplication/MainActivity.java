@@ -1,21 +1,15 @@
 package com.example.myapplication;
 
-import android.Manifest;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -64,6 +58,7 @@ public class MainActivity extends OptionsMenuActivity {
     public CardAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     public DBHelper dbHelper;
+    private int CREATE_MESSAGE = 414;
     //TODO: SMS SENDER
 
     @Override
@@ -98,7 +93,7 @@ public class MainActivity extends OptionsMenuActivity {
     @Override
     public void openMsgEditor() {
         Intent intent = new Intent(MainActivity.this, MsgEditor.class);
-        startActivityForResult(intent, 1);
+        startActivityForResult(intent, CREATE_MESSAGE);
 //        startActivity(new Intent(MainActivity.this, MsgEditor.class));
     }
 
@@ -106,13 +101,14 @@ public class MainActivity extends OptionsMenuActivity {
 
         ArrayList<Alarm> Alarms = new ArrayList<>();
         Cursor data = dbHelper.getData();
-        if (data == null) {
-        } else {
+        if (data != null) {
             for (data.moveToFirst(); !data.isAfterLast(); data.moveToNext()) {
                 Alarm aux = new Alarm(data.getString(1), data.getString(2), data.getString(3), data.getString(4), data.getLong(5));
                 Alarms.add(aux);
             }
+
         }
+
         return Alarms;
     }
 
@@ -131,8 +127,8 @@ public class MainActivity extends OptionsMenuActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1) {
-            if(resultCode == RESULT_OK) {
+        if(requestCode == CREATE_MESSAGE && resultCode == RESULT_OK) {
+
                 if(data != null) {
                     long alarmMillis = data.getLongExtra("alarmMillis", 0);
                     if(alarmMillis == 0) {
@@ -143,11 +139,12 @@ public class MainActivity extends OptionsMenuActivity {
                         int position = Alarms.size() -1;
                         startAlarm(position, alarmMillis);
                     }
-                }
+
                 mAdapter = new CardAdapter(Alarms);
                 mRecyclerView.setAdapter(mAdapter);
             }
         }
+
     }
 
     public void buildRecyclerView() {
@@ -220,10 +217,11 @@ public class MainActivity extends OptionsMenuActivity {
         Date aux = null;
         try {
             aux = sdf.parse(date);
+            toastMessage("Date is " + aux.toString());
         } catch (ParseException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
-        toastMessage("Date is " + aux.toString());
+
 
         boolean alarmUp = (PendingIntent.getBroadcast(this,  (int)Alarms.get(position).getMillis(),
                 new Intent("com.example.myapplication"),
@@ -244,10 +242,10 @@ public class MainActivity extends OptionsMenuActivity {
         //TODO: Here
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            toastMessage("Milliseconds: " + alarmMillis);
-            alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + alarmMillis, pendingIntent);
-        }
+
+        toastMessage("Milliseconds: " + alarmMillis);
+        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() + alarmMillis, pendingIntent);
+
 
 
         //TODO: Permission check which is checked somewhere else
